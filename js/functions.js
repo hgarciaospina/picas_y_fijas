@@ -23,28 +23,49 @@ function random(){
    random_number = [];
 }
 
-function addPlay(e) {
-  random();
-  e.preventDefault();
-  const row = createRow({
-    playerNumber: $('#playerNumber').val(),
-    playerPicas:  $('#playerNumber').val(),
-    playerFijas:  $('#playerNumber').val()
-  });
-  $('table tbody').append(row);
-  clean();
+picas = 1;
+fijas = 2; 
+function addPlay(e) { 
+    e.preventDefault();
+    const row = createRow({    
+          playerNumber: $('#playerNumber').val(),
+          fijas: fijas,    
+          picas: picas  });  
+    $('table tbody').append(row);  
+    clean(); 
+  } 
+
+  function createRow(data) {  return (    
+       `<tr>` + 
+         `<td>${$('tbody tr').length + 1}</td>` +      
+         `<td>${data.playerNumber}</td>` +      
+         `<td>${data.fijas}</td>` +      
+         `<td>${data.picas}</td>` +  
+       `</tr>`  
+      ); 
 }
 
-function createRow(data) {
-  return (
-    `<tr>` +
-      `<td>${$('tbody tr').length + 1}</td>` +
-      `<td>${data.playerNumber}</td>` +
-      `<td>${data.playerNumber}</td>` +
-      `<td>${data.playerNumber}</td>` +
-    `</tr>`
-  );
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  $("#playerNumber").keypress(function(e) {
        var datos = $('#playerNumber').val();
