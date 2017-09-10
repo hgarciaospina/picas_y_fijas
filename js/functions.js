@@ -1,6 +1,7 @@
 var random_number = "";
 var random_number;
 var digit = [];
+var validate = 1;
 
 //Genera el random
 randomNumber = random();
@@ -17,13 +18,10 @@ function random(){
       }
      }
   }
-
   for(i = 0; i < 4; i++){
    random_number += digit[i];
   }
-
   return random_number;
-
 } 
 
 function addPlay(e) { 
@@ -49,8 +47,13 @@ function addPlay(e) {
  $("#playerNumber").keypress(function(e) {
        if(e.which == 13) {
           var playerNumber = $('#playerNumber').val();
-          picasFijas(playerNumber, randomNumber);
-          random_number = "";
+          var validation = validateplayerNumber(playerNumber);
+              alert("Validación vale " + validation)
+          if (validation == 1) {
+            picasFijas(playerNumber, randomNumber);
+            random_number = ""; 
+          }  
+          return;
        }
 });
 
@@ -62,7 +65,6 @@ function clean() {
 function picasFijas (playerNumber, randomNumber){
   fijas = 0;
   picas = 0;
-  //alert("Parámetros recibidos " + " Numero usuario " + playerNumber + " Numero Random " + randomNumber);
   for (var i = 0; i < 4; i++) {
     for (var j = 0; j < 4; j++) {
       if (playerNumber[i] === randomNumber[j] && i == j) {
@@ -74,7 +76,38 @@ function picasFijas (playerNumber, randomNumber){
     }
   }
   if (fijas == 4) {
-    alert("!!Fuckyou, Babyyyyy, Won.......")
+    alert("!!Fuckyou, Babyyyyy, Won!!.......");
+    deleteTable();
+    clean();
   }
 
 }
+
+function validateplayerNumber(playerNumber){
+  for (var i = 0; i < 4; i++) {
+    for (var j = 0; j < i; j++) {
+      if ((playerNumber[i] == playerNumber[j]) || (playerNumber.length != 4)) {
+         alert("Debe de ingresar 4 digitos diferentes");
+         i = 4;
+         j = 4;
+         validate = 0;
+         break;
+       } else {
+          validate = 1;
+       } 
+    }
+  }
+  return validate;
+}
+
+function deleteTable(){
+ var rowsTable = 0;
+ rowsTable = $('tbody tr').length;
+
+ for(var r=rowsTable; r>=0; r--)
+  {
+   $("tbody tr:eq('"+ r +"')").remove(); 
+  };
+};
+ 
+

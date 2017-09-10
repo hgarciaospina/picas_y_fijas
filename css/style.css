@@ -6,6 +6,7 @@ body {
   background-color: #e5e8e8;
   font-family: 'Roboto', sans-serif;
 }
+
 .title {
   margin-top: 25px;
 }
@@ -44,6 +45,7 @@ table tbody td {
   font-size: 14px;
   padding: .5rem .65rem;
 }
+
 table thead th:not(:last-of-type),
 table tbody td:not(:last-of-type) {
   border-right: 1px solid #ccc;
