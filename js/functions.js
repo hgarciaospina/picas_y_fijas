@@ -1,7 +1,6 @@
 var random_number = "";
 var random_number;
 var digit = [];
-var validate = 1;
 
 //Genera el random
 randomNumber = random();
@@ -34,7 +33,7 @@ function addPlay(e) {
     clean(); 
   } 
 
-  function createRow(data) {  return (    
+function createRow(data) {  return (    
        `<tr>` + 
          `<td>${$('tbody tr').length + 1}</td>` +      
          `<td>${data.playerNumber}</td>` +    
@@ -46,14 +45,15 @@ function addPlay(e) {
 
  $("#playerNumber").keypress(function(e) {
        if(e.which == 13) {
-          var playerNumber = $('#playerNumber').val();
-          var validation = validateplayerNumber(playerNumber);
-              alert("Validación vale " + validation)
+          playerNumber = $('#playerNumber').val();
+          validation = validateplayerNumber(playerNumber);
           if (validation == 1) {
             picasFijas(playerNumber, randomNumber);
-            random_number = ""; 
-          }  
-          return;
+            addPlay(e);
+          } 
+          else {
+            alert("Debe de ingresar 4 digitos diferentes");
+          }
        }
 });
 
@@ -65,8 +65,8 @@ function clean() {
 function picasFijas (playerNumber, randomNumber){
   fijas = 0;
   picas = 0;
-  for (var i = 0; i < 4; i++) {
-    for (var j = 0; j < 4; j++) {
+  for (var i = 0; i < playerNumber.length; i++) {
+    for (var j = 0; j < playerNumber.length; j++) {
       if (playerNumber[i] === randomNumber[j] && i == j) {
         fijas++;
       }
@@ -87,7 +87,6 @@ function validateplayerNumber(playerNumber){
   for (var i = 0; i < 4; i++) {
     for (var j = 0; j < i; j++) {
       if ((playerNumber[i] == playerNumber[j]) || (playerNumber.length != 4)) {
-         alert("Debe de ingresar 4 digitos diferentes");
          i = 4;
          j = 4;
          validate = 0;
@@ -102,8 +101,7 @@ return validate;
 
 //Elimina las filas de los resultados de los intentos en la tabla
 function deleteTable(){
- var rowsTable = 0;
- rowsTable = $('tbody tr').length;
+ var rowsTable = $('tbody tr').length;
  for(var r=rowsTable; r>=0; r--)
   {
    $("tbody tr:eq('"+ r +"')").remove(); 

@@ -13,7 +13,7 @@
     <div class="subtitle">
       <p>Ingrese cuatro digitos diferentes y oprima <strong>Enter</strong></p>
     </div>
-    <form onsubmit="addPlay(event)">
+    <form onsubmit="validateplayerNumber(playerNumber)">
       <section class="group">
         <input type="number" id="playerNumber" 
               required pattern="[0-9]{4,4}" 
