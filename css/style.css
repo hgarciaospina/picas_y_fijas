@@ -16,11 +16,8 @@ body {
   margin-bottom: 25px;
 }
 
-form {
+#playerNumber {
   display: inline-flex;
-}
-
-form input {
   border: 1px solid #ccc;
   color: #333;
   text-align: center;
@@ -60,4 +57,11 @@ table tbody tr:not(:last-of-type) {
     width: 450px;   
     margin: 0 auto;   
     text-align: center;
+    margin-bottom:  25px;
+}
+
+table {
+  width: 400px;   
+  margin: 0 auto;   
+  text-align: center; 
 }

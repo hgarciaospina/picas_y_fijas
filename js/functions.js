@@ -1,7 +1,7 @@
 var random_number = "";
 var random_number;
 var digit = [];
-
+var won = 0;
 //Genera el random
 randomNumber = random();
 
@@ -49,7 +49,9 @@ function createRow(data) {  return (
           validation = validateplayerNumber(playerNumber);
           if (validation == 1) {
             picasFijas(playerNumber, randomNumber);
-            addPlay(e);
+            if (won == 0) {
+               addPlay(e);
+            };
           } 
           else {
             alert("Debe de ingresar 4 digitos diferentes");
@@ -65,6 +67,7 @@ function clean() {
 function picasFijas (playerNumber, randomNumber){
   fijas = 0;
   picas = 0;
+
   for (var i = 0; i < playerNumber.length; i++) {
     for (var j = 0; j < playerNumber.length; j++) {
       if (playerNumber[i] === randomNumber[j] && i == j) {
@@ -76,6 +79,7 @@ function picasFijas (playerNumber, randomNumber){
     }
   }
   if (fijas == 4) {
+    won = 1;
     alert("!!Good, Babyyyyy, Won!!.......");
     deleteTable();
     clean();
