@@ -76,7 +76,7 @@ function picasFijas (playerNumber, randomNumber){
     }
   }
   if (fijas == 4) {
-    alert("!!Fuckyou, Babyyyyy, Won!!.......");
+    alert("!!Good, Babyyyyy, Won!!.......");
     deleteTable();
     clean();
   }
@@ -92,22 +92,20 @@ function validateplayerNumber(playerNumber){
          j = 4;
          validate = 0;
          break;
-       } else {
-          validate = 1;
-       } 
+      }else{
+         validate = 1;
+      } 
     }
   }
-  return validate;
+return validate;
 }
 
+//Elimina las filas de los resultados de los intentos en la tabla
 function deleteTable(){
  var rowsTable = 0;
  rowsTable = $('tbody tr').length;
-
  for(var r=rowsTable; r>=0; r--)
   {
    $("tbody tr:eq('"+ r +"')").remove(); 
   };
 };
- 
-
