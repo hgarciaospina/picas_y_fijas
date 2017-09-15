@@ -44,6 +44,7 @@ function createRow(data) {  return (
 }
 
  $("#playerNumber").keypress(function(e) {
+       colorOk();
        if(e.which == 13) {
           playerNumber = $('#playerNumber').val();
           validation = validateplayerNumber(playerNumber);
@@ -113,17 +114,12 @@ function deleteTable(){
   };
 };
 
-//Cambia el color del mensaje a rojo y el fondo del input cuando no ingresan 4 digitos diferentes
-function colorError() {
-   $("#error").css("color","red"); 
- }
-
  
 //javascript
 js_won = null;
 
- //jquery 
- $(function() {            
+//jquery 
+$(function() {            
         function jq_won() {
             $('.result.won').show();
          }
@@ -134,3 +130,50 @@ js_won = null;
  function wonPlay() {  
        js_won(); //== call jquery function - just Reference is globally defined not function itself
 }
+
+//javascript
+jsColorOk = null;
+
+//Jquery
+$(function() {            
+        function jqColorOk() {
+            $("#error").css("color","black"); 
+         }
+        jsColorOk = jqColorOk;
+ })
+
+//just js 
+ function colorOk() {  
+       jsColorOk(); //== call jquery function - just Reference is globally defined not function itself
+}
+
+
+//javascript
+jsColorError = null;
+$(function() {            
+        function jqColorError() {
+            $("#error").css("color","red"); 
+         }
+        jsColorError = jqColorError;
+ })
+
+//just js 
+ function colorError() {  
+       jsColorError(); //== call jquery function - just Reference is globally defined not function itself
+}
+
+$(document).ready(function(){
+  $("input").keydown(function(){
+    longInput = $('#playerNumber').val().length;
+    if (longInput < 3 || longInput > 3 ) {
+      $("input").css("color","red");
+      $("#ok").css("color","red");
+    } 
+     else {
+      $("input").css("color","black");
+      $("#ok").css("color","black");
+    } 
+  });
+});
+
+
