@@ -54,6 +54,7 @@ function createRow(data) {  return (
             };
           } 
           else {
+            colorError();
             alert("Debe de ingresar 4 digitos diferentes");
           }
        }
@@ -79,10 +80,10 @@ function picasFijas (playerNumber, randomNumber){
     }
   }
   if (fijas == 4) {
+    wonPlay();
     won = 1;
-    alert("!!Good, Babyyyyy, Won!!.......");
-    deleteTable();
-    clean();
+  //  deleteTable();
+    //clean();
   }
 
 }
@@ -111,3 +112,25 @@ function deleteTable(){
    $("tbody tr:eq('"+ r +"')").remove(); 
   };
 };
+
+//Cambia el color del mensaje a rojo y el fondo del input cuando no ingresan 4 digitos diferentes
+function colorError() {
+   $("#error").css("color","red"); 
+ }
+
+ 
+//javascript
+js_won = null;
+
+ //jquery 
+ $(function() {            
+        function jq_won() {
+            $('.result.won').show();
+         }
+        js_won = jq_won;
+ }) 
+ 
+ //just js 
+ function wonPlay() {  
+       js_won(); //== call jquery function - just Reference is globally defined not function itself
+}

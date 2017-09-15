@@ -4,7 +4,7 @@
 
 body {
   background-color: #e5e8e8;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arsenal', sans-serif;
 }
 
 .title {
@@ -64,4 +64,36 @@ table {
   width: 400px;   
   margin: 0 auto;   
   text-align: center; 
+}
+
+#error {
+  color: red;
+}
+
+.result {
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 38%;
+  width: 100%;
+}
+
+.result span {
+  font-size: 70px;
+  font-weight: bold;
+  color: white;
+}
+
+.result .close {
+  margin-top: 70px;
+}
+
+.result .close a {
+  color: white;
+  background-color: #ff5800;
+  font-size: 21px;
+  text-decoration: none;
+  border: 3px solid white;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
