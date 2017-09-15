@@ -66,8 +66,8 @@ table {
   text-align: center; 
 }
 
-#error {
-  color: red;
+#ok {
+  color: blue;
 }
 
 .result {

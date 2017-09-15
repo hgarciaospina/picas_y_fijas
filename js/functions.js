@@ -44,19 +44,17 @@ function createRow(data) {  return (
 }
 
  $("#playerNumber").keypress(function(e) {
-       colorOk();
        if(e.which == 13) {
           playerNumber = $('#playerNumber').val();
           validation = validateplayerNumber(playerNumber);
           if (validation == 1) {
             picasFijas(playerNumber, randomNumber);
-            if (won == 0) {
+            if (won == 0 || won == 1) {
                addPlay(e);
-            };
+            }
           } 
           else {
-            colorError();
-            alert("Debe de ingresar 4 digitos diferentes");
+            return;
           }
        }
 });
@@ -86,7 +84,6 @@ function picasFijas (playerNumber, randomNumber){
   //  deleteTable();
     //clean();
   }
-
 }
 
 function validateplayerNumber(playerNumber){
@@ -131,41 +128,11 @@ $(function() {
        js_won(); //== call jquery function - just Reference is globally defined not function itself
 }
 
-//javascript
-jsColorOk = null;
-
-//Jquery
-$(function() {            
-        function jqColorOk() {
-            $("#error").css("color","black"); 
-         }
-        jsColorOk = jqColorOk;
- })
-
-//just js 
- function colorOk() {  
-       jsColorOk(); //== call jquery function - just Reference is globally defined not function itself
-}
-
-
-//javascript
-jsColorError = null;
-$(function() {            
-        function jqColorError() {
-            $("#error").css("color","red"); 
-         }
-        jsColorError = jqColorError;
- })
-
-//just js 
- function colorError() {  
-       jsColorError(); //== call jquery function - just Reference is globally defined not function itself
-}
 
 $(document).ready(function(){
   $("input").keydown(function(){
     longInput = $('#playerNumber').val().length;
-    if (longInput < 3 || longInput > 3 ) {
+    if (longInput < 4 || longInput > 4 ) {
       $("input").css("color","red");
       $("#ok").css("color","red");
     } 
@@ -176,4 +143,16 @@ $(document).ready(function(){
   });
 });
 
-
+$(document).ready(function(){
+  $("input").keyup(function(){
+    longInput = $('#playerNumber').val().length;
+    if (longInput < 4 || longInput > 4 ) {
+      $("input").css("color","red");
+      $("#ok").css("color","red");
+    } 
+     else {
+      $("input").css("color","black");
+      $("#ok").css("color","black");
+    } 
+  });
+});
