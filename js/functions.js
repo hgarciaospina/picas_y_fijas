@@ -4,22 +4,28 @@ var digit = [];
 var won = 0;
 
 
-
-//Genera el random
+//Genera el random al ingresar por primera vez a la página
 randomNumber = random();
 
 $('.close').on('click', function() {
-  $('body').css('background-color', 'rgba(229, 232, 232, 1)');
+ // $('body').css('background-color', 'rgba(229, 232, 232, 1)');
+  $('.result').show();
   $('.result.won').hide();
   beginPlay();
 });
 
+
+//Inicia el juego nuevamente
 function beginPlay(){
     deleteTable();
     clean();
-    random();
+    randomNumber = null;
+    random_number = [];
+    randomNumber = random();
 }
 
+
+//Genera el random
 function random(){
 // Hecho por KarlanKas en el 2004
 //No me quites el crédito
@@ -77,6 +83,8 @@ function createRow(data) {  return (
        }
 });
 
+
+//Limpia el inṕut del dato que ingresa el usuario
 function clean() {
   $('#playerNumber').val('');
   $('#playerNumber').focus();
@@ -97,8 +105,8 @@ function picasFijas (playerNumber, randomNumber){
     }
   }
   if (fijas == 4) {
-    wonPlay();
     won = 1;
+    wonPlay();
   }
 }
 
@@ -148,7 +156,7 @@ js_won_background = null;
 //jquery 
 $(function() {            
         function jq_won_background() {
-            $('body').css('background-color', 'rgba(0, 0, 0, 0.7)');
+             $('.result').show();
          }
         js_won_background = jq_won_background;
  }) 

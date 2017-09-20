@@ -40,10 +40,6 @@ table {
   margin-top: 50px;
 }
 
-table thead th {
-  background-color: rgba(229, 232, 232, 1);
-}
-
 table thead th,
 table tbody td {
   color: rgba(0, 0, 0, 1);;
@@ -76,18 +72,24 @@ table {
 
 #ok { color: black; }
 
-.result {
-  display: none;
-  position: absolute;
-  text-align: center;
-  top: 25%;
-  width: 100%;
-}
 
 .result span {
+  display: block;
+  margin-top: 180px;
   font-size: 110px;
   font-weight: bold;
   color: white;
+}
+
+.result {  
+  display: none;  
+  position: absolute;  
+  background: rgba(0, 0, 0, 0.7);  
+  text-align: center;  
+  top: 0;  
+  left: 0; 
+  width: 100%;  
+  height: 100%; 
 }
 
 .result .close { margin-top: 30px; }
