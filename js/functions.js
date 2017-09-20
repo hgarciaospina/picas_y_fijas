@@ -2,8 +2,23 @@ var random_number = "";
 var random_number;
 var digit = [];
 var won = 0;
+
+
+
 //Genera el random
 randomNumber = random();
+
+$('.close').on('click', function() {
+  $('body').css('background-color', 'rgba(229, 232, 232, 1)');
+  $('.result.won').hide();
+  beginPlay();
+});
+
+function beginPlay(){
+    deleteTable();
+    clean();
+    random();
+}
 
 function random(){
 // Hecho por KarlanKas en el 2004
@@ -23,19 +38,21 @@ function random(){
   return random_number;
 } 
 
+
+//Adiciona una fila con los datos a la tabla
 function addPlay(e) { 
     e.preventDefault();
     const row = createRow({    
           playerNumber: $('#playerNumber').val(),
           fijas: fijas,    
           picas: picas  });  
-    $('table tbody').append(row);  
+    $('table tbody').prepend(row);  
     clean(); 
   } 
 
+//Crea los datos de la fila de la tabla
 function createRow(data) {  return (    
-       `<tr>` + 
-         `<td>${$('tbody tr').length + 1}</td>` +      
+       `<tr>` +     
          `<td>${data.playerNumber}</td>` +    
          `<td>${data.picas}</td>` +   
          `<td>${data.fijas}</td>` +      
@@ -51,10 +68,11 @@ function createRow(data) {  return (
             picasFijas(playerNumber, randomNumber);
             if (won == 0 || won == 1) {
                addPlay(e);
+               clean();
             }
           } 
           else {
-            return;
+            $("#ok").css("color","red");
           }
        }
 });
@@ -64,10 +82,10 @@ function clean() {
   $('#playerNumber').focus();
 }
 
+//Realiza el proceso de aciertos y desaciertos del número del usuario
 function picasFijas (playerNumber, randomNumber){
   fijas = 0;
   picas = 0;
-
   for (var i = 0; i < playerNumber.length; i++) {
     for (var j = 0; j < playerNumber.length; j++) {
       if (playerNumber[i] === randomNumber[j] && i == j) {
@@ -81,11 +99,10 @@ function picasFijas (playerNumber, randomNumber){
   if (fijas == 4) {
     wonPlay();
     won = 1;
-  //  deleteTable();
-    //clean();
   }
 }
 
+//Valida de que el usuario ingrese un número de 4 digitos
 function validateplayerNumber(playerNumber){
   for (var i = 0; i < 4; i++) {
     for (var j = 0; j < i; j++) {
@@ -110,11 +127,9 @@ function deleteTable(){
    $("tbody tr:eq('"+ r +"')").remove(); 
   };
 };
-
  
 //javascript
 js_won = null;
-
 //jquery 
 $(function() {            
         function jq_won() {
@@ -122,29 +137,25 @@ $(function() {
          }
         js_won = jq_won;
  }) 
- 
  //just js 
  function wonPlay() {  
        js_won(); //== call jquery function - just Reference is globally defined not function itself
+       js_won_background();
 }
 
+//javascript
+js_won_background = null;
+//jquery 
+$(function() {            
+        function jq_won_background() {
+            $('body').css('background-color', 'rgba(0, 0, 0, 0.7)');
+         }
+        js_won_background = jq_won_background;
+ }) 
 
+//Coloca en rojo los digitos que ingresa el usuario cuando son menos de 4 o más de 5 
 $(document).ready(function(){
-  $("input").keydown(function(){
-    longInput = $('#playerNumber').val().length;
-    if (longInput < 4 || longInput > 4 ) {
-      $("input").css("color","red");
-      $("#ok").css("color","red");
-    } 
-     else {
-      $("input").css("color","black");
-      $("#ok").css("color","black");
-    } 
-  });
-});
-
-$(document).ready(function(){
-  $("input").keyup(function(){
+  $('input').on('keyup keydown', function() {
     longInput = $('#playerNumber').val().length;
     if (longInput < 4 || longInput > 4 ) {
       $("input").css("color","red");

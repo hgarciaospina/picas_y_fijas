@@ -2,18 +2,26 @@
 *:before,
 *:after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  background-color: #e5e8e8;
+body{
+  background-color: rgba(229, 232, 232, 1);
   font-family: 'Arsenal', sans-serif;
 }
 
-.title {
-  margin-top: 25px;
-}
+.title { margin-top: 25px; }
 
 .subtitle {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+input { 
+  width:400px;
+}
+
+input:focus{
+  border-color: rgba(50, 100, 255, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
 }
 
 #playerNumber {
@@ -33,12 +41,12 @@ table {
 }
 
 table thead th {
-  background-color: #f2f2f2;  
+  background-color: rgba(229, 232, 232, 1);
 }
 
 table thead th,
 table tbody td {
-  color: #333;
+  color: rgba(0, 0, 0, 1);;
   font-size: 14px;
   padding: .5rem .65rem;
 }
@@ -66,31 +74,27 @@ table {
   text-align: center; 
 }
 
-#ok {
-  color: blue;
-}
+#ok { color: black; }
 
 .result {
   display: none;
   position: absolute;
   text-align: center;
-  top: 38%;
+  top: 25%;
   width: 100%;
 }
 
 .result span {
-  font-size: 70px;
+  font-size: 110px;
   font-weight: bold;
   color: white;
 }
 
-.result .close {
-  margin-top: 70px;
-}
+.result .close { margin-top: 30px; }
 
 .result .close a {
   color: white;
-  background-color: #ff5800;
+  background-color: #f04500; 
   font-size: 21px;
   text-decoration: none;
   border: 3px solid white;

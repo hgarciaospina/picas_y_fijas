@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
-<body>
+<body class="setBody">
   <div class="wrapper">
     <h1 class="title">Picas y Fijas</h1>
     <div class="subtitle">
@@ -16,7 +16,7 @@
     </div>
   
       <section class="group">
-        <input type="number" id="playerNumber" required pattern="[0-9]{4}" 
+        <input type="number" id="playerNumber" required pattern="[0-9]{4}" autocomplete="off" 
                title = " Debe ingresar 4 digitos no repetidos "
         >  
     </div>
@@ -24,7 +24,6 @@
       <table>
         <thead>
           <tr>
-            <th>Intento</th>
             <th>Número</th>
             <th>Picas</th>
             <th>Fijas</th>
@@ -32,12 +31,12 @@
         </thead>
        <tbody>  
 
-        </tbody>
+       </tbody>
      </table>
     </div>     
-
+    
     <div class="result won">
-      <span>!Ganaste!</span>
+      <span>¡Ganaste!</span>
       <div class="close">
         <a href="#">Jugar nuevamente</a>
       </div>
